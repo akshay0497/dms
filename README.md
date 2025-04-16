@@ -1,90 +1,108 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+# MedCure - First Aid Guide App
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+MedCure is a bilingual (Hindi-first, English-second) React Native application that serves as a first-aid guide for medical emergencies. The app features an industrial design for its UI and uses Redux-Saga for state management. It also supports full application translation using i18n with Redux.
 
-## Step 1: Start Metro
+## Features
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+- **Bilingual Support:** Hindi-first, with English as a secondary language.
+- **First-Aid Guidance:** Provides crucial medical emergency information.
+- **Industrial UI Design:** Designed for easy navigation in emergency situations.
+- **State Management with Redux-Saga:** Ensures smooth and predictable data handling.
+- **Drawer & Stack Navigation:** Offers a seamless user experience.
+- **Expandable API Support:** Uses array-based data, making it easy to integrate future APIs.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## Tech Stack
 
-```sh
-# Using npm
-npm start
+- **React Native**
+- **TypeScript**
+- **Redux & Redux-Saga**
+- **React Navigation (Drawer & Stack Navigation)**
+- **i18n for Localization**
+- **Jest for Testing**
+- **Metro Bundler**
 
-# OR using Yarn
-yarn start
+## Installation
+
+To set up the project, follow these steps:
+
+### Prerequisites
+- Node.js (>=14.x)
+- npm or yarn
+- React Native CLI
+- Android Studio (for Android development)
+- Xcode (for iOS development)
+
+### Steps
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/swatiitgithub/Medcure-App.git
+   cd medcure
+   ```
+
+2. Install dependencies:
+   ```sh
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Set up iOS dependencies (MacOS only):
+   ```sh
+   cd ios
+   pod install
+   cd ..
+   ```
+
+4. Run the app:
+   ```sh
+   npm run android   # For Android
+   npm run ios       # For iOS (MacOS only)
+   ```
+
+## Project Structure
+
+```
+└── medcure/
+    ├── src/                   # Source code
+    │   ├── assets/             # Images and media
+    │   ├── constants/          # Constant values
+    │   ├── localization/       # i18n files
+    │   ├── navigations/        # Navigation setup
+    │   ├── redux/              # Redux store, actions, and reducers
+    │   ├── screens/            # Screen components
+    ├── android/               # Android native code
+    ├── ios/                   # iOS native code
+    ├── package.json           # Dependencies and scripts
+    ├── App.tsx                # Root component
+    ├── README.md              # Project documentation
 ```
 
-## Step 2: Build and run your app
+## Contributing
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+Contributions are welcome! Please follow these steps:
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Commit your changes (`git commit -m 'Add new feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a Pull Request.
 
-### Android
+## License
 
-```sh
-# Using npm
-npm run android
+This project is licensed under the MIT License.
 
-# OR using Yarn
-yarn android
-```
+## Contact
+For any inquiries, feel free to contact:
+- **Developer:** Swati Mishra
+- **Email:** swatimishra3092002@gmail.com
+- **GitHub:** [GitHub Profile](https://github.com/swatiitgithub)
 
-### iOS
+---
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+This README provides a comprehensive overview of your project, making it easy for others to understand, install, and contribute to it.
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
 
 # Learn More
 

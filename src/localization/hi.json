@@ -1,0 +1,17 @@
+{
+  "drawer": {
+    "projectTitle": "मेडी-क्योर",
+    "home": "होम",
+    "settings": "सेटिंग्स",
+    "EmergencyPhoneNumbers": "आपातकालीन फ़ोन नंबर",
+    "AimsofFirstAid": "प्राथमिक चिकित्सा के उद्देश्य",
+    "PatientCare": "रोगी देखभाल",
+    "InformationforwhencallinganAmbulance": "एम्बुलेंस को कॉल करने के लिए जानकारी",
+    "HowtouseAdrenalineAutoInjector": "एड्रेनालाईन ऑटो-इंजेक्टर का उपयोग कैसे करें",
+    "Bandagestypes": "बैंडेज - प्रकार और उपयोग",
+    "FirstAidCourses": "प्राथमिक चिकित्सा पाठ्यक्रम",
+    "hindi": "हिन्दी",
+    "english": "अंग्रेजी",
+    "changeTheme": "थीम बदलें"
+  }
+}
