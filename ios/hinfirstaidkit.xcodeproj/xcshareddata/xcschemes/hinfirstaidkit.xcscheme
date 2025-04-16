@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "hinfirstaidkit.app"
-               BlueprintName = "hinfirstaidkit"
-               ReferencedContainer = "container:hinfirstaidkit.xcodeproj">
+               BuildableName = "dms.app"
+               BlueprintName = "dms"
+               ReferencedContainer = "container:dms.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "hinfirstaidkitTests.xctest"
-               BlueprintName = "hinfirstaidkitTests"
-               ReferencedContainer = "container:hinfirstaidkit.xcodeproj">
+               BuildableName = "dmsTests.xctest"
+               BlueprintName = "dmsTests"
+               ReferencedContainer = "container:dms.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "hinfirstaidkit.app"
-            BlueprintName = "hinfirstaidkit"
-            ReferencedContainer = "container:hinfirstaidkit.xcodeproj">
+            BuildableName = "dms.app"
+            BlueprintName = "dms"
+            ReferencedContainer = "container:dms.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "hinfirstaidkit.app"
-            BlueprintName = "hinfirstaidkit"
-            ReferencedContainer = "container:hinfirstaidkit.xcodeproj">
+            BuildableName = "dms.app"
+            BlueprintName = "dms"
+            ReferencedContainer = "container:dms.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

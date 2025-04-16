@@ -1,4 +1,4 @@
-package com.hinfirstaidkit
+package com.dms
 
 import android.app.Application
 import com.facebook.react.PackageList
