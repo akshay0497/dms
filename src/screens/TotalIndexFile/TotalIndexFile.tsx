@@ -3,26 +3,33 @@ import { View, StyleSheet, ScrollView, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '../../theme/ThemeContext';
 import { useTranslation } from 'react-i18next';
+import { DrawerNavigationProp } from '@react-navigation/drawer';
+import { RootDrawerParamList } from '../../navigations/DrawerNavigator';
+import Header from '../../components/Header';
 
-const Card3Screen = () => {
+type Card2ScreenNavigationProp = DrawerNavigationProp<RootDrawerParamList, 'Total Index File'>;
+
+interface Card2ScreenProps {
+  navigation: Card2ScreenNavigationProp;
+}
+
+const TotalIndexFile = ({ navigation }: Card2ScreenProps) => {
   const { colors, isDarkMode } = useTheme();
   const { t } = useTranslation();
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: isDarkMode ? colors.background.dark : colors.background.default }]}>
-      <View style={styles.header}>
-        <Text style={[styles.title, { color: isDarkMode ? colors.text.primary : colors.text.primary }]}>
-          {t('Total Document Type')}
-        </Text>
-      </View>
-
+      <Header 
+        title="Total Index File" 
+        navigation={navigation} 
+      />
       <ScrollView style={styles.content}>
         <View style={[styles.card, { backgroundColor: isDarkMode ? colors.background.paper : colors.background.paper }]}>
           <Text style={[styles.cardTitle, { color: isDarkMode ? colors.text.primary : colors.text.primary }]}>
-            {t('List of Total Document Type')}
+            {t('Index File Content')}
           </Text>
           <Text style={[styles.cardText, { color: isDarkMode ? colors.text.secondary : colors.text.secondary }]}>
-            {t('This is the content for Total Document Type. You can add any relevant information here.')}
+            {t('This is the index file content section.')}
           </Text>
         </View>
       </ScrollView>
@@ -34,40 +41,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  header: {
-    padding: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: '#E5E7EB',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
   content: {
     flex: 1,
     padding: 16,
   },
   card: {
-    padding: 20,
-    borderRadius: 12,
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
+    padding: 16,
+    borderRadius: 8,
+    marginBottom: 16,
   },
   cardTitle: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 12,
+    marginBottom: 8,
   },
   cardText: {
     fontSize: 16,
-    lineHeight: 24,
   },
 });
 
-export default Card3Screen; 
+export default TotalIndexFile; 

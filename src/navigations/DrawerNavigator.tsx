@@ -6,10 +6,10 @@ import CustomDrawerContent from './CustomDrawerContent';
 import LoginScreen from '../screens/LoginScreen';
 import HomeScreen from '../screens/Home/HomeScreen';
 import AboutScreen from '../screens/About/AboutScreen';
-import Card1Screen from '../screens/Card1/Card1Screen';
-import Card2Screen from '../screens/Card2/Card2Screen';
-import Card3Screen from '../screens/Card3/Card3Screen';
-import Card4Screen from '../screens/Card4/Card4Screen';
+import TotalDocument from '../screens/TotalDocument/TotalDocument';
+import TotalIndexFile from '../screens/TotalIndexFile/TotalIndexFile';
+import TotalDocumentType from '../screens/TotalDocumentType/TotalDocumentType';
+import TotalSplitFile from '../screens/TotalSplitFile/TotalSplitFile';
 
 export type RootDrawerParamList = {
   Home: undefined;
@@ -41,10 +41,10 @@ const DrawerNavigator = () => {
       {isLoggedIn ? (
         <>
           <Drawer.Screen name="Home" component={HomeScreen} />
-          <Drawer.Screen name="Total Document" component={Card1Screen} />
-          <Drawer.Screen name="Total Index File" component={Card2Screen} />
-          <Drawer.Screen name="Total Document Type" component={Card3Screen} />
-          <Drawer.Screen name="Total Split File" component={Card4Screen} />
+          <Drawer.Screen name="Total Document" component={TotalDocument} />
+          <Drawer.Screen name="Total Index File" component={TotalIndexFile} />
+          <Drawer.Screen name="Total Document Type" component={TotalDocumentType} />
+          <Drawer.Screen name="Total Split File" component={TotalSplitFile} />
           <Drawer.Screen name="About" component={AboutScreen} />
         </>
       ) : (

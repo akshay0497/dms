@@ -1,9 +1,55 @@
 {
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search"
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "username": "Username",
+    "password": "Password",
+    "welcome": "Welcome Back",
+    "signIn": "Please sign in to continue",
+    "loginFailed": "Login failed",
+    "enterCredentials": "Please enter both username and password"
+  },
+  "home": {
+    "dashboard": "Dashboard",
+    "totalDocument": "Total Document",
+    "totalIndexFile": "Total Index File",
+    "totalDocumentType": "Total Document Type",
+    "totalSplitFile": "Total Split File",
+    "about": "About",
+    "zoneDistribution": "Zone Distribution",
+    "noData": "No data available"
+  },
   "drawer": {
-    "projectTitle": "Doc Management System",
     "home": "Home",
-    "hindi": "हिन्दी",
-    "english": "English",
-    "changeTheme": "Change Theme"
+    "totalDocument": "Total Document",
+    "totalIndexFile": "Total Index File",
+    "totalDocumentType": "Total Document Type",
+    "totalSplitFile": "Total Split File",
+    "about": "About",
+    "settings": "Settings",
+    "profile": "Profile",
+    "guestUser": "Guest User",
+    "notLoggedIn": "Not logged in"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "notifications": "Notifications",
+    "privacy": "Privacy",
+    "help": "Help",
+    "about": "About"
   }
 }

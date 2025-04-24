@@ -70,15 +70,31 @@ const LoginScreen = ({ navigation }: LoginScreenProps) => {
     return !newErrors.username && !newErrors.password;
   };
 
+  // const handleLogin = async () => {
+  //   if (!validateForm()) {
+  //     return;
+  //   }
+  //   setIsLoading(true);
+  //   try {
+  //     await dispatch(login(username, password));
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
+
   const handleLogin = async () => {
     if (!validateForm()) {
       return;
     }
     setIsLoading(true);
-    try {
-      await dispatch(login(username, password));
-    } finally {
-      setIsLoading(false);
+  
+    const result = await dispatch(login(username, password));
+    setIsLoading(false);
+  
+    if (result) {
+      Alert.alert(t('Success'), t('Login successful!'));
+    } else {
+      Alert.alert(t('Error'), t('Wrong UserID and Password or Invalid credentials... '));
     }
   };
 
@@ -86,6 +102,7 @@ const LoginScreen = ({ navigation }: LoginScreenProps) => {
     <KeyboardAvoidingView 
       style={[styles.container, { backgroundColor: colors.background.default }]}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20}
     >
       <StatusBar 
         barStyle="light-content"

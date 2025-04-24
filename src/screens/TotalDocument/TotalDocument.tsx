@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, FlatList, Text, ActivityIndicator, Platform } from 'react-native';
+import { View, StyleSheet, FlatList, Text, ActivityIndicator, Platform, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '../../theme/ThemeContext';
 import { useTranslation } from 'react-i18next';
@@ -24,6 +24,8 @@ const Card1Screen = ({ navigation }: Card1ScreenProps) => {
   const [page, setPage] = useState(1);
   const [loadingMore, setLoadingMore] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
+  const [filterText, setFilterText] = useState('');
+
   const totalDocumentData = useSelector((state: RootState) => state.totalDocument.data);
   const isLoading = useSelector((state: RootState) => state.totalDocument.loading);
   const error = useSelector((state: RootState) => state.totalDocument.error);
@@ -47,13 +49,23 @@ const Card1Screen = ({ navigation }: Card1ScreenProps) => {
     setRefreshing(false);
   };
 
+  const filteredData = totalDocumentData?.data?.filter((item: any) => {
+    const search = filterText.toLowerCase();
+    return (
+      item.fileNo?.toLowerCase().includes(search) ||
+      item.subj?.toLowerCase().includes(search) ||
+      item.sub_Subject_Name?.toLowerCase().includes(search) ||
+      moment(item.fDate).format('DD-MM-YYYY').includes(search)
+    );
+  });
+
   const renderHeader = () => (
-    <View style={[styles.headerRow, { backgroundColor: isDarkMode ? colors.background.paper : colors.background.paper }]}>
-      <Text style={[styles.headerText, { color: colors.text.primary }]}>Sr. No.</Text>
-      <Text style={[styles.headerText, { color: colors.text.primary }]}>Name</Text>
-      <Text style={[styles.headerText, { color: colors.text.primary }]}>Subject</Text>
-      <Text style={[styles.headerText, { color: colors.text.primary }]}>Sub-Subject</Text>
-      <Text style={[styles.headerText, { color: colors.text.primary }]}>File Date</Text>
+    <View style={[styles.headerRow, { backgroundColor: isDarkMode ? colors.background.paper : '#000080'  }]}>
+      <Text style={[styles.headerText, { color: '#ffffff' }]}>Sr. No.</Text>
+      <Text style={[styles.headerText, { color: '#ffffff' }]}>Name</Text>
+      <Text style={[styles.headerText, { color: '#ffffff' }]}>Subject</Text>
+      <Text style={[styles.headerText, { color: '#ffffff' }]}>Sub-Subject</Text>
+      <Text style={[styles.headerText, { color: '#ffffff' }]}>File Date</Text>
     </View>
   );
 
@@ -78,35 +90,59 @@ const Card1Screen = ({ navigation }: Card1ScreenProps) => {
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: isDarkMode ? colors.background.dark : colors.background.default }]}>
-      <Header 
-        title="Total Document" 
-        navigation={navigation} 
-      />
-      {isLoading ? (
+      <Header title="Total Document" navigation={navigation} />
+
+      <View style={styles.searchBox}>
+        <TextInput
+          placeholder="Search by Name, Subject, Sub-Subject, or Date"
+          value={filterText}
+          onChangeText={setFilterText}
+          style={[
+            styles.input,
+            {
+              backgroundColor: colors.background.paper,
+              color: colors.text.primary,
+              borderColor: colors.text.primary,
+            },
+          ]}
+          placeholderTextColor={isDarkMode ? '#aaa' : '#666'}
+        />
+      </View>
+
+      {isLoading ?
+       (
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="large" color={colors.primary.main} />
         </View>
-      ) : error ? (
+      ) 
+      : error ? (
         <View style={styles.errorContainer}>
           <Text style={[styles.errorText, { color: colors.error.main }]}>{error}</Text>
         </View>
-      ) : (
+      ) : 
+      (
         <View style={styles.tableContainer}>
           {renderHeader()}
-          <FlatList
-            data={totalDocumentData?.data || []}
-            renderItem={renderItem}
-            keyExtractor={(item, index) => index.toString()}
-            ListFooterComponent={renderFooter}
-            onEndReached={handleLoadMore}
-            onEndReachedThreshold={0.5}
-            refreshing={refreshing}
-            onRefresh={handleRefresh}
-            contentContainerStyle={styles.content}
-            style={styles.list}
-          />
-        </View>
-      )}
+          {filteredData?.length > 0 ? (
+      <FlatList
+        data={filteredData}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index.toString()}
+        ListFooterComponent={renderFooter}
+        onEndReached={handleLoadMore}
+        onEndReachedThreshold={0.5}
+        refreshing={refreshing}
+        onRefresh={handleRefresh}
+        contentContainerStyle={styles.content}
+        style={styles.list}
+      />
+    ) : (
+      <View style={styles.noDataContainer}>
+        <Text style={[styles.noDataText, { color: colors.text.primary }]}>No records found</Text>
+      </View>
+      )
+      }
+      </View>)}
     </SafeAreaView>
   );
 };
@@ -114,6 +150,17 @@ const Card1Screen = ({ navigation }: Card1ScreenProps) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  searchBox: {
+    paddingHorizontal: 16,
+    paddingTop: 10,
+  },
+  input: {
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    fontSize: 14,
   },
   tableContainer: {
     flex: 1,
@@ -131,16 +178,13 @@ const styles = StyleSheet.create({
     zIndex: 1,
     elevation: 3,
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 3,
   },
   list: {
     flex: 1,
-    marginTop: 56, // Height of headerRow + padding
+    marginTop: 56,
   },
   row: {
     flexDirection: 'row',
@@ -153,6 +197,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 14,
     textAlign: 'center',
+    color:"#ffffff",
+    borderTopRightRadius:12
   },
   cell: {
     flex: 1,
@@ -181,6 +227,17 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     alignItems: 'center',
   },
+  noDataContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 40,
+  },
+  noDataText: {
+    fontSize: 16,
+    textAlign: 'center',
+    color: '#999',
+  },
 });
 
-export default Card1Screen; 
+export default Card1Screen;

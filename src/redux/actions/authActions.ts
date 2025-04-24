@@ -15,6 +15,7 @@ export const login = (useR_ID: string, password: string) => async (dispatch: App
       'Login successful!',
       [{ text: 'OK' }]
     );
+    return true;
   } catch (error: any) {
     dispatch({
       type: SET_ERROR,
@@ -25,6 +26,7 @@ export const login = (useR_ID: string, password: string) => async (dispatch: App
       error.response?.data?.message || 'Login failed',
       [{ text: 'OK' }]
     );
+    return false;
   }
 };
 

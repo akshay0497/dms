@@ -46,7 +46,7 @@ const CustomDrawerContent = (props: any) => {
   const handleLanguageToggle = () => {
     const newLanguage = !isHindi;
     dispatch(changeLanguage(newLanguage) as any);
-    i18n.changeLanguage(newLanguage ? 'hi' : 'en');
+    i18n.changeLanguage(newLanguage ? 'en' : 'hi');
   };
 
   const handleLogout = () => {
@@ -112,6 +112,7 @@ const CustomDrawerContent = (props: any) => {
           </Text>
         </TouchableOpacity>
 
+        {/* Language Toggle Button - Commented out
         <TouchableOpacity
           style={[styles.toggleButton, { backgroundColor: isDarkMode ? colors.background.dark : colors.background.default }]}
           onPress={handleLanguageToggle}
@@ -125,6 +126,7 @@ const CustomDrawerContent = (props: any) => {
             {isHindi ? "हिन्दी" : "English"}
           </Text>
         </TouchableOpacity>
+        */}
 
         {isLoggedIn && (
           <TouchableOpacity

@@ -3,18 +3,26 @@ import { View, StyleSheet, ScrollView, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '../../theme/ThemeContext';
 import { useTranslation } from 'react-i18next';
+import { RootDrawerParamList } from '@/navigations/DrawerNavigator';
+import { DrawerNavigationProp } from '@react-navigation/drawer';
+import Header from '@/components/Header';
 
-const Card4Screen = () => {
+type Card1ScreenNavigationProp = DrawerNavigationProp<RootDrawerParamList, 'Total Document'>;
+
+interface Card1ScreenProps {
+  navigation: Card1ScreenNavigationProp;
+}
+
+const TotalSplitFile = ({ navigation }: Card1ScreenProps) => {
   const { colors, isDarkMode } = useTheme();
   const { t } = useTranslation();
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: isDarkMode ? colors.background.dark : colors.background.default }]}>
-      <View style={styles.header}>
-        <Text style={[styles.title, { color: isDarkMode ? colors.text.primary : colors.text.primary }]}>
-          {t('Total Split File')}
-        </Text>
-      </View>
+      <Header 
+        title="Total Split File" 
+        navigation={navigation} 
+      />
 
       <ScrollView style={styles.content}>
         <View style={[styles.card, { backgroundColor: isDarkMode ? colors.background.paper : colors.background.paper }]}>
@@ -70,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Card4Screen; 
+export default TotalSplitFile; 

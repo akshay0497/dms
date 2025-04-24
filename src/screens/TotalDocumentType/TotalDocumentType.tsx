@@ -3,33 +3,34 @@ import { View, StyleSheet, ScrollView, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '../../theme/ThemeContext';
 import { useTranslation } from 'react-i18next';
+import Header from '@/components/Header';
+import { RootDrawerParamList } from '@/navigations/DrawerNavigator';
 import { DrawerNavigationProp } from '@react-navigation/drawer';
-import { RootDrawerParamList } from '../../navigations/DrawerNavigator';
-import Header from '../../components/Header';
 
-type Card2ScreenNavigationProp = DrawerNavigationProp<RootDrawerParamList, 'Total Index File'>;
+type Card1ScreenNavigationProp = DrawerNavigationProp<RootDrawerParamList, 'Total Document'>;
 
-interface Card2ScreenProps {
-  navigation: Card2ScreenNavigationProp;
+interface Card1ScreenProps {
+  navigation: Card1ScreenNavigationProp;
 }
 
-const Card2Screen = ({ navigation }: Card2ScreenProps) => {
+const TotalDocumentType = ({ navigation }: Card1ScreenProps) => {
   const { colors, isDarkMode } = useTheme();
   const { t } = useTranslation();
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: isDarkMode ? colors.background.dark : colors.background.default }]}>
       <Header 
-        title="Total Index File" 
+        title="Total Document Type" 
         navigation={navigation} 
       />
+
       <ScrollView style={styles.content}>
         <View style={[styles.card, { backgroundColor: isDarkMode ? colors.background.paper : colors.background.paper }]}>
           <Text style={[styles.cardTitle, { color: isDarkMode ? colors.text.primary : colors.text.primary }]}>
-            {t('Index File Content')}
+            {t('List of Total Document Type')}
           </Text>
           <Text style={[styles.cardText, { color: isDarkMode ? colors.text.secondary : colors.text.secondary }]}>
-            {t('This is the index file content section.')}
+            {t('This is the content for Total Document Type. You can add any relevant information here.')}
           </Text>
         </View>
       </ScrollView>
@@ -41,23 +42,40 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  header: {
+    padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E5E7EB',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
   content: {
     flex: 1,
     padding: 16,
   },
   card: {
-    padding: 16,
-    borderRadius: 8,
-    marginBottom: 16,
+    padding: 20,
+    borderRadius: 12,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
   },
   cardTitle: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 8,
+    marginBottom: 12,
   },
   cardText: {
     fontSize: 16,
+    lineHeight: 24,
   },
 });
 
-export default Card2Screen; 
+export default TotalDocumentType; 
