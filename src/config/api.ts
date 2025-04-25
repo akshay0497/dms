@@ -5,6 +5,7 @@ export const API_CONFIG = {
       LOGIN: 'USER/USERLOGIN',
       Dashboard: 'DashboardEntity/GetDashboardData',
       TotalDocument: 'DocMangr/GetDocMangr',
+      TotalDocumentType: 'DashboardEntity/GetDashboardData',
       Chart: 'Zone/GetZonemaster'
     },
     USER: {

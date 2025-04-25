@@ -2,23 +2,23 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { API_CONFIG } from '../../config/api';
 import api from '../../services/api';
 
-interface DashboardState {
+interface totalDocumentTypeState {
   data: any;
   loading: boolean;
   error: string | null;
 }
 
-const initialState: DashboardState = {
+const initialState: totalDocumentTypeState = {
   data: null,
   loading: false,
   error: null,
 };
 
-const dashboardSlice = createSlice({
-  name: 'dashboard',
+const totalDocumentTypeSlice = createSlice({
+  name: 'totalDocument',
   initialState,
   reducers: {
-    setDashboardData: (state, action: PayloadAction<any>) => {
+    setTotalDocumentTypeData: (state, action: PayloadAction<any>) => {
       state.data = action.payload;
       state.loading = false;
       state.error = null;
@@ -33,19 +33,20 @@ const dashboardSlice = createSlice({
   },
 });
 
-export const { setDashboardData, setLoading, setError } = dashboardSlice.actions;
+export const { setTotalDocumentTypeData, setLoading, setError } = totalDocumentTypeSlice.actions;
 
-const getDashboardData = async () => {
+const getTotalDocumentTypeData = async (id:number) => {
   try {
-    const endpoint = API_CONFIG.ENDPOINTS.AUTH.Dashboard;
+    const endpoint = API_CONFIG.ENDPOINTS.AUTH.TotalDocumentType;
     const fullUrl = `${API_CONFIG.BASE_URL}${endpoint}`;
-    console.log('Dashboard Request Details:', {
+    console.log('TotalDocument Request Details:', {
       endpoint,
       fullUrl
     });
+
     const currentISOTime = new Date().toISOString();
     const collectData = {
-      type: 1,
+      type: id,
       pageID: 1,
       searchBy: "",
       fromdt: "1999-01-01",
@@ -54,23 +55,23 @@ const getDashboardData = async () => {
     };
 
     const response = await api.post(endpoint, collectData);
-    console.log('Dashboard Response:', response.data);
+    console.log('TotalDocument Response:', response.data);
     return response.data;
   } catch (error: any) {
-    console.error('Dashboard API Error:', error);
+    console.error('TotalDocument API Error:', error);
     throw error;
   }
 };
 
-export const fetchDashboardData = () => async (dispatch: any) => {
+export const fetchTotalDocumentTypeData = (id:number) => async (dispatch: any) => {
   try {
     dispatch(setLoading(true));
-    const data = await getDashboardData();
-    dispatch(setDashboardData(data));
+    const data = await getTotalDocumentTypeData(id);
+    dispatch(setTotalDocumentTypeData(data));
   } catch (error: any) {
-    console.error('Dashboard Fetch Error:', error);
-    dispatch(setError(error.message || 'Failed to fetch dashboard data'));
+    console.error('TotalDocument Fetch Error:', error);
+    dispatch(setError(error.message || 'Failed to fetch total document data'));
   }
 };
 
-export default dashboardSlice.reducer; 
+export default totalDocumentTypeSlice.reducer; 

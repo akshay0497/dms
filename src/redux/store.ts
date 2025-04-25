@@ -4,6 +4,7 @@ import languageReducer from './reducers/languageReducer';
 import themeReducer from './reducers/themeReducer';
 import dashboardReducer from './reducers/dashboardReducer';
 import totalDocumentReducer from './reducers/totalDocumentReducer';
+import totalDocumentTypeReducer from './reducers/totalDocumentTypeReducer';
 import chartReducer from './reducers/chartReducers';
 
 
@@ -14,6 +15,7 @@ export const store = configureStore({
     theme: themeReducer,
     dashboard: dashboardReducer,
     totalDocument: totalDocumentReducer,
+    totalDocumentType : totalDocumentTypeReducer,
     chart: chartReducer,
   },
   middleware: (getDefaultMiddleware) =>
